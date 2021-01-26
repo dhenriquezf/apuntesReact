@@ -1,5 +1,4 @@
 # apuntesReact
-notas de curso react
 Creacion de nueestro sitio wev usando la plantilla por defecto de create-react-app:
 npx create-react-app nombre-de-tu-proyecto
 
@@ -280,3 +279,86 @@ module.exports={
 
 Parte 9 - INSTALACION Y CONFIGURACION DE ENTORNO:
 crear entorno de desarrollo local para ir probando lo que estamos construyecto
+
+instalar como dependencia de desarrollo:
+npm install --save-dev webpack-dev-server
+
+Crearemos un script en el archivo de configuracion (package.json) para poder correr nuestro entorno de desarrollo local
+
+{
+  ""scripts"": {
+    ""build"": ""webpack --mode production"",
+    ""start"": ""webpack-dev-server --open --mode development""
+  },
+}
+NOTA: version nueva de webpack se cambia el codigo: => "start": "webpack serve --mode development --env development"
+
+se le pasa la configuracion de nuestro entorno local de desarrollo
+
+Ahora para ejecutarlo vamos a terminal y corremos con npm run start (es el nombre del script que creamos)
+
+con esto cada vez que se detecte un cambio se auto compilara el proyecto. (basicamente podremos probar en tiempo real)
+
+
+Estilos con SASS
+
+preprocesador de CSS, para trabajar con variables en css y mixing
+primero debemos instalar algunos paquetes:
+
+npm install --save-dev mini-css-extract-plugin css-loader node-sass sass-loader
+
+mini-css-extract-plugin => extraer css del bundle para crear un nuevo archivo de css
+node-sass sass-loader => añade a compatibilidad con sass
+css-loader => para cargar css
+
+en el archivo de webpack tenemos que agregar una nueva regla para el css:
+en test ponemos las extensiones de los arhivos a usar y en use los loader que ocuparemos. usaremos un loader para minificar el proyecto.
+
+module: {
+  rules: [
+    {
+      test: /\.(s*)css$/,
+      use: [
+        { loader: MiniCssExtractPlugin.loader },
+        'css-loader',
+        'sass-loader',
+      ],
+    }, 
+  ],
+},
+en el archivo debemos crear una constante la referencia para el pugling que extrae css del proyecto:
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+ahora al final del archivo agregamos el nuevo pluging y el nombre.
+
+plugins: [
+  new MiniCssExtractPlugin({
+    filename: 'assets/[name].css',
+  }),
+],
+
+creamos la carpeta donde tendremos nuestros archivos de Estilos
+assets sera la carpeta para estilos o recursos visuales, dentro de esta existe la carpeta styles, aqui tendremos los archivos de estilos (scss)
+aqui debemos usa scss o css.
+
+este archivo lo importamos a nuestro archivo de componente.
+(NOTA: Ojo con los niveles de las carpetas)
+
+ahora corremos el entorno de desarrollo local con npm run start.
+
+Configuracion final: ESLINT y GIT IGNORE
+con esto podremos ver los errores al momento de tipear codigo y con git ignore podremos omitir archivos a subir a git:
+
+npm install --save-dev eslint babel-eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y
+
+eslint-config-airbnb => usaremos las reglas de ellos para el proyecto
+eslint-plugin-react => para revisar codigo de react
+eslint-plugin-jsx-a11y => para accesibilidad de los proyecto y detectar lo que sea necesario para el navegador
+
+ahora se necesita agregar la configuracion par eslint (archivo adjunto en esta carpeta)
+con el nombre .eslintrc
+aqui lo que estamos haciendo es crear un entorno con variables necesarias, con las configuracion necesarias y reglas para usar eslint.
+
+con el achivos de gitignore realizamos el mismo proceso, creamos un archivo llamada .gitignore
+
