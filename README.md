@@ -59,7 +59,7 @@ Stateless -> no depende de tener un estado o un ciclo de vida solo presenta logi
 
 Presentacionales -> no tienen logica ni propiedades se encargan de mostrar el html, de como se vera los elementos, tienen una parte particular de html usa funciones pero no logica.(averiguar mas)
 
-parte 2:
+## parte 2:
 
 JSX -> sintaxis que usa react para mezclar javascripts html y css en un solo componente (componente = archivo)
 
@@ -93,7 +93,7 @@ e incluso podemos agregar validaciones entre llaves (como un if ternario)
 una vez creado se importa en el index.js y lo agregamos al render de reactDOM
 con esto deberia poder verse este componente en el index
 
-Parte 3:
+## Parte 3:
 
 Podemos pasar propiedades a nuestros componentes asi como lo hacemos en las funciones, no importa si es presentacional o de tipo clase, pero si necesitas manipularlas es necesario instanciarlas en una nueva variable.
 
@@ -109,7 +109,7 @@ tambien puedes desestructurar los datos, extraer el valor del valor dentro de pr
 Ejemplo:
 const { value1, value2 } = props
 
-Parte 4:
+## Parte 4:
 
 Metodos del ciclo de vida (similares a los de android):
 
@@ -120,7 +120,7 @@ Desmontaje => componentWillUnmont
 Manejo de Errores => getDerivedStateFromError, componentDidCatch
 
 
-Parte 5:
+## Parte 5:
 
 Crear componente Stateful con estados y eventos:
 una vez teniendo creado el proyecto creamos un componente de tipo stateful, de tipo clase, este extendera de Componente, esta puede traerse desde el import o directamente al extender (React.Component), Clase base:
@@ -192,7 +192,7 @@ handleClick = () => ( this.setState({ count: this.state.count + 1 }));
 esta funcion se la debemos asignar al evento onClick del elemento HTML:
 onClick{this.handleClick}
 
-Parte 6 - INSTALACION Y CONFIGURACION DE ENTORNO:
+## Parte 6 - INSTALACION Y CONFIGURACION DE ENTORNO:
 REACT
 WEBPACK
 BABEL
@@ -217,7 +217,8 @@ OJO CON LAS VULNERABILIDADES AL INSTALAR.
 al instalar react se crea el archivos package-lock.json, permite manejar el versionado de los paquetes que instales
 en el archivo package.json se agregan las dependencias de react y ReactDOM.
 
-Parte 7 - INSTALACION Y CONFIGURACION DE ENTORNO (BABEL):
+## Parte 7 - INSTALACION Y CONFIGURACION DE ENTORNO (BABEL):
+
 NOTA: No solo configuramos aqui tambien creamos un componente base llamado HelloWorld.
 Creamos el componente HelloWorld (o el que quieras), en components, importamos React y creamos el componente con una constante (funcion flecha) que retornara un simple hola mundo en html, y luego lo exportamos:
 
@@ -284,7 +285,7 @@ Ejemplo:
     ]
 }
 
-Parte 8 - INSTALACION Y CONFIGURACION DE ENTORNO (webpack):
+## Parte 8 - INSTALACION Y CONFIGURACION DE ENTORNO (webpack):
 
 webpack se encarga de preparar el proyecto para desarrollo o pasar proyeccion, se encarga de los archivos dejarlos listos para todo
 npm install webpack webpack-cli html-webpack-plugin html-loader  --save-dev
@@ -367,7 +368,7 @@ module.exports={
   },
 
 
-Parte 9 - INSTALACION Y CONFIGURACION DE ENTORNO:
+## Parte 9 - INSTALACION Y CONFIGURACION DE ENTORNO:
 crear entorno de desarrollo local para ir probando lo que estamos construyecto
 
 instalar como dependencia de desarrollo:
@@ -390,7 +391,7 @@ Ahora para ejecutarlo vamos a terminal y corremos con npm run start (es el nombr
 con esto cada vez que se detecte un cambio se auto compilara el proyecto. (basicamente podremos probar en tiempo real)
 
 
-Estilos con SASS
+## Estilos con SASS
 
 preprocesador de CSS, para trabajar con variables en css y mixing
 primero debemos instalar algunos paquetes:
@@ -437,7 +438,7 @@ este archivo lo importamos a nuestro archivo de componente.
 
 ahora corremos el entorno de desarrollo local con npm run start.
 
-Configuracion final: ESLINT y GIT IGNORE
+## Configuracion final: ESLINT y GIT IGNORE
 con esto podremos ver los errores al momento de tipear codigo y con git ignore podremos omitir archivos a subir a git:
 
 npm install --save-dev eslint babel-eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y
