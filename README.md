@@ -222,6 +222,7 @@ en el archivo package.json se agregan las dependencias de react y ReactDOM.
 NOTA: No solo configuramos aqui tambien creamos un componente base llamado HelloWorld.
 Creamos el componente HelloWorld (o el que quieras), en components, importamos React y creamos el componente con una constante (funcion flecha) que retornara un simple hola mundo en html, y luego lo exportamos:
 
+```
 import React from 'react'
 
 const HelloWorld = () => {
@@ -229,6 +230,7 @@ const HelloWorld = () => {
 }
 
 export default HelloWorld;
+```
 
 Ahora debemos crear (si no lo esta aun) nuestro archivo de entrada, que basicamente es el primer archivo que sera detectado en nuestro proyecto, el index.js, aqui se trabaja con toda la configuracion de react (almenos en este proyecto, no se si es siempre haci):
 creamos archivo index.js en la raiz de la carpeta src (si es que no se creo en el paso anterior)
