@@ -135,7 +135,10 @@ no es necesario al importar especificar la extension de los archivos.
 
 para mostrar el componente importado se debe agregar en los parentesis de la funcion render del ReactDOM.
 Ejemplo:
+
+```
 ReactDOM.render(<HolaMundo /> ---> este es el componente, document.getElementById('root'));
+```
 
 ## Crear un elemento .jsx del tipo presentacional
 importamos react
@@ -157,50 +160,61 @@ con esto deberia poder verse este componente en el index
 Podemos pasar propiedades a nuestros componentes asi como lo hacemos en las funciones, no importa si es presentacional o de tipo clase, pero si necesitas manipularlas es necesario instanciarlas en una nueva variable.
 
 Ejemplo:
+```
 const Button = props => { return HTML AQUI! props.value}
+```
 
 una vez creado el componente se agrega al archivo index.js y dentro del mismo se le puede pasar las propiedades.
 Ejemplo:
+```
 ReactDOM.render(<Button text="Click!" /> ---> este es el componente y la propiedad, document.getElementById('root'));
+```
 
 tambien puedes desestructurar los datos, extraer el valor del valor dentro de props.
 
 Ejemplo:
+```
 const { value1, value2 } = props
+```
 
 ## Parte 4:
 
 Metodos del ciclo de vida (similares a los de android):
 
-Fases de los componentes de react:
-Montaje => Constructor, render, ComponentDidMount
-Actualizacion => getDerivedStateFromProps, shouldComponentUpdate, render, componentDidUpdate
-Desmontaje => componentWillUnmont
-Manejo de Errores => getDerivedStateFromError, componentDidCatch
+**Fases de los componentes de react:**
+- Montaje => Constructor, render, ComponentDidMount
+- Actualizacion => getDerivedStateFromProps, shouldComponentUpdate, render, componentDidUpdate
+- Desmontaje => componentWillUnmont
+- Manejo de Errores => getDerivedStateFromError, componentDidCatch
 
 
 ## Parte 5:
 
 Crear componente Stateful con estados y eventos:
 una vez teniendo creado el proyecto creamos un componente de tipo stateful, de tipo clase, este extendera de Componente, esta puede traerse desde el import o directamente al extender (React.Component), Clase base:
-
+```
 class NombreClase extends Component {  }
-
+```
 Al crear la clase le agregamos el metodo render a la clase (metod de montaje), con su correspondiente return:
+```
 class NombreClase extends Component {
   render() { return() }
 }
+```
 
 para terminar exportamos la clase (componente):
 
+```
 export default NombreClase.
-
+```
 Ahora podemos agregar un objeto en la clase que tendra el estado, en este caso un contados:
 
+```
 state = { count: 0,} (debe ir antes del render)
+```
 
 ahora en nuetro return vamos a agregar nuestro html que sera visualizado, crearemos un mensaje con el contador y un boton que ira aumentando el contador (el estado supuestamente), para poder mostrar la varible del estado debemos guardala en una variable dentro del metodo render, usamos destructuracion:
-
+```
 render() {
   const { count } = this.state
   return (
@@ -210,19 +224,19 @@ render() {
     </div>
   )
 }
-
+```
 con esto podemos mostrar la variable del objeto estado, deberia poder correr el proyecto y visualizar mas no aumentar el contador. Ahora creamos una funcion que ira incrementando el contador dentro de la clase, usaremos el metodo setState para setear el valor de count del objeto estado:
-
+```
 handleClick = () => {
   this.SetState({
     count: this.state.count + 1
   })
 }
-
+```
 Ahora Agregamos el evento onClick al boton llamando a la funcion creada 'handleClick', el llamado a la funcion debe ser mediante llaves {}:
-
+```
 <button onClick={this.handleClick} type="button">Click</button>
-
+```
 Con esto el contador podra incrementar.
 
 
@@ -233,24 +247,27 @@ dentro de la clase usas la funcion render y esta funcion retorna el html.
 El estado en react es un objeto que le puedes definir variables de todo tipo y al que podemos acceder desde nuestro componente desde el momento en que se inicializa.
 Ejemplo:
 (detro de la clase) 
+```
 state = {
   count: 0,
 }
-
+```
 este objeto lo podemos desestructurar dentro de la funcion render de la clase para usarlo en el html (al parecer la variable que almacenara el dato debe ir dentro del metodo render, averiguar):
 Ejemplo:
+```
 const { count } = this.state (siguiendo el ejemplo de arriba)
-
+```
 Eventos (html):
 Deben usar camelCase
 
 creamos una funcion para el ejemplo:
-
+```
 handleClick = () => ( this.setState({ count: this.state.count + 1 }));
-
+```
 esta funcion se la debemos asignar al evento onClick del elemento HTML:
+```
 onClick{this.handleClick}
-
+```
 ## Parte 6 - INSTALACION Y CONFIGURACION DE ENTORNO:
 REACT
 WEBPACK
@@ -297,15 +314,15 @@ aqui importamos react y ReactDOM, reactDOM trabaja junto con react, esta se enca
 
 Aqui no creamos un nuevo componente si no que utilizamos reactDom para pasar los componentes creados.
 utilizamos ReactDOM para pasar el componente por medio del metodo render:
-
+```
 ReactDOM.render()
-
+```
 tenemos que importar el componente en el index.js y se lo pasamos como parametro al metodo render. Los componentes (hasta ahora, no se si es todo asi) se pasan como parametro con la siguiente estructura: -> <NombreComponente />
 
 render recibe dos elementos, el componente y donde voy a empujar el componente (la parte el html)
-
+```
 ReactDOM.render(< HelloWorld />, document.getElementById('id del elemento donde se visualizara el componente entregado a render'))
-
+```
 
 en el archivo de public le daremos vida a todo
 creamos nuestra base de HTML (head, html, body, title...)
@@ -315,8 +332,9 @@ Instalacion de BABEL
 Con babel podemos crear y convertir JavaScripts moderno en JavaScripts compatible con todos los navegadores.
 
 install babel:
+```
 npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader
-
+```
 con el comando --save-dev indicamos que estas librerias se usaran en el ambiente (dependencia) de desarrollo.
 --save-dev => indica que es solo para desarrollo la dependencia
 
@@ -339,13 +357,14 @@ babel-loader -> trabaja con webpack
 creamos un objeto y le agregamos un arreglo llamado presents que contenga el nombre de los preset que se instalaron => @babel/preset-env @babel/preset-react 
 uno ayuda a trabajar con ESMASCRIPT y el otro con jsx y react
 Ejemplo:
+```
 {
   "presents": [
     "@babel/preset-env"
     "@babel/preset-react"
     ]
 }
-
+```
 ## Parte 8 - INSTALACION Y CONFIGURACION DE ENTORNO (webpack):
 
 webpack se encarga de preparar el proyecto para desarrollo o pasar proyeccion, se encarga de los archivos dejarlos listos para todo
@@ -386,7 +405,7 @@ creamos uno llamado build y le pasamos la configuracion necesaria -> webpack --m
 con esto vamos a la terminal y ejecutamos npm run build
 esto nos mostrada un hash para identificar el compilado version tiempo archivos y si ocurrio algun problema
 si revisamos nuestro proyecto encontraremos los archivos que le indicamos a webpack que creara dentro de dist
-
+```
 module.exports={
     entry: './src/index.js',
     output: {
@@ -427,7 +446,7 @@ module.exports={
 "scripts": {
     "build": "webpack --mode production"
   },
-
+```
 
 ## Parte 9 - INSTALACION Y CONFIGURACION DE ENTORNO:
 crear entorno de desarrollo local para ir probando lo que estamos construyecto
@@ -436,14 +455,15 @@ instalar como dependencia de desarrollo:
 npm install --save-dev webpack-dev-server
 
 Crearemos un script en el archivo de configuracion (package.json) para poder correr nuestro entorno de desarrollo local
-
+```
 {
   ""scripts"": {
     ""build"": ""webpack --mode production"",
     ""start"": ""webpack-dev-server --open --mode development""
   },
 }
-NOTA: version nueva de webpack se cambia el codigo: => "start": "webpack serve --mode development --env development"
+```
+***NOTA: version nueva de webpack se cambia el codigo: => "start": "webpack serve --mode development --env development"***
 
 se le pasa la configuracion de nuestro entorno local de desarrollo
 
@@ -465,7 +485,7 @@ css-loader => para cargar css
 
 en el archivo de webpack tenemos que agregar una nueva regla para el css:
 en test ponemos las extensiones de los arhivos a usar y en use los loader que ocuparemos. usaremos un loader para minificar el proyecto.
-
+```
 module: {
   rules: [
     {
@@ -478,35 +498,37 @@ module: {
     }, 
   ],
 },
+```
 en el archivo debemos crear una constante la referencia para el pugling que extrae css del proyecto:
-
+```
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+```
 ahora al final del archivo agregamos el nuevo pluging y el nombre.
-
+```
 plugins: [
   new MiniCssExtractPlugin({
     filename: 'assets/[name].css',
   }),
 ],
-
+```
 creamos la carpeta donde tendremos nuestros archivos de Estilos
 assets sera la carpeta para estilos o recursos visuales, dentro de esta existe la carpeta styles, aqui tendremos los archivos de estilos (scss)
 aqui debemos usa scss o css.
 
 este archivo lo importamos a nuestro archivo de componente.
-(NOTA: Ojo con los niveles de las carpetas)
+***NOTA: Ojo con los niveles de las carpetas***
 
 ahora corremos el entorno de desarrollo local con npm run start.
 
 ## Configuracion final: ESLINT y GIT IGNORE
 con esto podremos ver los errores al momento de tipear codigo y con git ignore podremos omitir archivos a subir a git:
-
+```
 npm install --save-dev eslint babel-eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-jsx-a11y
+```
 
-eslint-config-airbnb => usaremos las reglas de ellos para el proyecto
-eslint-plugin-react => para revisar codigo de react
-eslint-plugin-jsx-a11y => para accesibilidad de los proyecto y detectar lo que sea necesario para el navegador
+- eslint-config-airbnb => usaremos las reglas de ellos para el proyecto
+- eslint-plugin-react => para revisar codigo de react
+- eslint-plugin-jsx-a11y => para accesibilidad de los proyecto y detectar lo que sea necesario para el navegador
 
 ahora se necesita agregar la configuracion par eslint (archivo adjunto en esta carpeta)
 con el nombre .eslintrc
