@@ -1,32 +1,63 @@
-# apuntesReact
-Creacion de nuestro sitio web usando la plantilla por defecto de create-react-app:
+# Apuntes React
+Lo primero que debemos hacer es instalar nodeJS en nuestro equipo
+verificamos su version de npm y npx:
+
+```
+npm -v
+npx -v
+```
+Creando proyecto por defecto de React
+Para crear un proyecto de react estandar pre configurado usamos el comando create-react-app, sitio web usando la plantilla por defecto:
+
+```
 npx create-react-app nombre-de-tu-proyecto
+```
 
-Iniciar el servidor de desarrollo:
+Con npx podemos probar react sin necesidad de instalar las librerias en nuestro equipo, para ejecutar comandos o paquetes sin tener que instalarlos de manera global
+
+La creacion del proyecto puede tardar in poco, una vez ya listo ingresamos a la carpeta (por terminal) e iniciamos el servidor de desarrollo:
+
+```
 npm start
+```
 
+Esto se instala en una carpeta todo el proyecto funciona con esto sin esto no arranca
 
-esto se instala en una carpeta todo el proyecto funciona con esto sin esto no arranca
+<!-- NOTA
+buscar que era npx (para ejecutar comandos o paquetes sin tener que instalarlos de manera global) -->
 
-NOTA
-buscar que era npx (para ejecutar comandos o paquetes sin tener que instalarlos de manera global)
+Al ejecutar npm start la terminal muestra la ip y se despliega el sitio web basico de react
 
-al ejecutar npm start la terminal muestra la ip y se despliega el sitio web basico de react
+**Conceptos basicos del proyecto**
+- node_modules -> *son las (elementos) librerias que usa react, nunca se sube a producción*
+- public -> *archivos publicos, para subir a producción (archivo favicon.icon, manifest.json) aqui se encuentra nuestro archivo index.html principal, aqui esta el dom*
+- src -> *aqui esta toda la aplicación (serviceWorker.js => escucha los cambios en nuestra aplicación), los archivos de js, css, sass, jsx*
+- .gitignore -> *archivo que contiene todo los elementos o carpetas que no seran subidos al repositorio*
+- package.json -> *contiene toda la informacion  y configuracion de nuestro proyecto*
+- README.md -> *archivo que contiene una descripción del proyecto, en este caso tiene un manual (tambien lo puede tener)*
 
-node_modules -> son las (elementos) librerias que usa react, nunca sube a produccion
-public -> archivos publicos, para subir a producción (archivo favicon.icon, manifest.json) aqui se encuentra nuestro archivo index.html principal, aqui esta el dom
-src -> aqui esta toda la aplicacion (serviceWorker.js => escucha los cambios en nuestra aplicacion), los archivos de js, css, sass, jsx
+***NOTA: averiguar que es o como funciona el serviceWorker.js***
 
-.gitignore
+## Agregar nuevos componentes (elementos) al proyecto pre generado de react
 
-package.json -> contiene toda la informacion  y configuracion de nuestro proyecto
+Debemos crear una carpeta llamada componentes donde estaran todos los componentes que conformaran el proyecto.
 
-README.md
+**Componente Stateful**
 
+Dentro de la carpeta Components crearemos un archivo llamado Stateful.js (la extension puede cambiar a jsx) donde importar las librerias de react y components, creamos la clase con el nombre Stateful que extendera de Components (puede importar aqui directamente la libreria componentes) y posteriormente crearemos un constructor para la clase Statefull y tambien un metodo llamado render, este ultimo se encarga de retornar el HTML que crearemos, luego se debe exportar el nuevo componente (la clase especificamente).
 
-create carpeta para componentes dentro de src:
+Stateful -> *Los componentes de tipo Stateful se encarga manejar los ciclos de vida, eventos y los estados de los elementos (componentes) este tipo de componentes se crean como una clase, son los unicos que se crean como clase.*
 
-primer componente a crear sera un Stateful.js (Capitalcase) NOTA: descripcion mas abajo
+**Pasos:**
+1. Crear carpeta Components en src
+2. Crear archivo Stateful.js
+3. Importar React y Components
+4. Crear clase Stateful que extiende de Components
+5. Crear metodo Contructor para la clase
+6. Crear metodo render para la clase
+7. Exportar clase (componente)
+
+<!-- primer componente a crear sera un Stateful.js (Capitalcase) NOTA: descripcion mas abajo
 
 import dentro del archivos Libreria de react
 
@@ -34,30 +65,58 @@ Stateful debe extender de Components (libreria de react)
 
 crear constructor en la clase Stateful y funcion render() (retorna la funcion la pagina)
 
-exportar la clase.
+exportar la clase. -->
+**Componente Stateful**
 
-crear un Stateless.js
+Dentro de la carpeta Components crearemos un archivo llamado Stateless.js (la extension puede cambiar a jsx) donde importar las librerias de react, creamos una funcion de tipo flecha con el nombre Stateless posteriormente crearemos un metodo llamado render, este ultimo se encarga de retornar el HTML que crearemos luego se debe exportar el nuevo componente (la funcion especificamente).
+
+Stateless -> *Los componentes de tipo Stateful no depende de tener un estado o un ciclo de vida solo presenta logica, son funciones, solo lo que necesitamos se agrega aqui.*
+
+**Pasos:**
+1. Crear carpeta Components en src
+2. Crear archivo Stateless.js
+3. Importar React
+4. Crear funcion flecha Stateful
+5. Crear metodo render para la funcion
+7. Exportar funcion (componente)
+
+<!-- crear un Stateless.js
 
 import react library
 
 create constants Stateless as a function and return html into -> ()
 
-export function
+export function -->
 
-crear un Presentacional.js
+**Componente Stateful**
+
+Dentro de la carpeta Components crearemos un archivo llamado Presentacional.js (la extension puede cambiar a jsx) donde importar las librerias de react, creamos una funcion de tipo flecha con el nombre Presentacional posteriormente crearemos un metodo llamado render, este ultimo se encarga de retornar el HTML que crearemos luego se debe exportar el nuevo componente (la funcion especificamente).
+
+Presentacional -> *Los componentes de tipo Presentacional no tienen logica ni propiedades se encargan de mostrar el html, de como se vera los elementos, tienen una parte particular de html usa funciones pero no logica.(averiguar mas).*
+
+**Pasos:**
+1. Crear carpeta Components en src
+2. Crear archivo Presentacional.js
+3. Importar React
+4. Crear funcion flecha Presentacional
+5. Crear metodo render para la funcion
+7. Exportar funcion (componente)
+
+***NOTA: se recomiendo que los nombre de los archivos sean con Capitalcase***
+<!-- crear un Presentacional.js
 
 importar react
 
 crear constante como funcion y retorna html entre parentesis (usar arrow function)
 
-exporta constante
+exporta constante -->
 
 
-Stateful -> se encarga manejar los ciclos de vida eventos y los estados de los elementos,es una clase
+<!-- Stateful -> se encarga manejar los ciclos de vida eventos y los estados de los elementos,es una clase -->
 
-Stateless -> no depende de tener un estado o un ciclo de vida solo presenta logica, son funciones, solo lo que necesitamos.
+<!-- Stateless -> no depende de tener un estado o un ciclo de vida solo presenta logica, son funciones, solo lo que necesitamos. -->
 
-Presentacionales -> no tienen logica ni propiedades se encargan de mostrar el html, de como se vera los elementos, tienen una parte particular de html usa funciones pero no logica.(averiguar mas)
+<!-- Presentacionales -> no tienen logica ni propiedades se encargan de mostrar el html, de como se vera los elementos, tienen una parte particular de html usa funciones pero no logica.(averiguar mas) -->
 
 ## parte 2:
 
