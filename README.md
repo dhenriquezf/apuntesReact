@@ -334,7 +334,7 @@ Los componentes de React pasan por fases estas fases se las llama Ciclo de vida 
 Los componentes pasa por 4 pasos:
 ***(revisar para posible mejora de explicacion***
 
-#### Montaje:
+###### Montaje:
 En esta fase nuestro componente se crea junto a la lógica y los componentes internos y luego es insertado en el DOM.
 
 **Constructor()**
@@ -353,7 +353,7 @@ Si queremos representar elementos en el DOM en este método es donde se escribe 
 
 Este método se llama inmediatamente que ha sido montado en el DOM, aquí es donde trabajamos con eventos que permitan interactuar con nuestro componente.
 
-#### Actualización:
+###### Actualización:
 En esta fase nuestro componente está al pendiente de cambios que pueden venir a través de un cambio en “state” o “props” esto en consecuencia realizan una acción dentro de un componente.
 
 **getDerivedStateFromProps()**
@@ -372,14 +372,14 @@ Se llama el método render que representa los cambios en el DOM.
 
 Este método es invocado inmediatamente después de que el componente se actualiza y recibe como argumentos las propiedades y el estado y es donde podemos manejar nuestro componente.
 
-#### Desmontaje:
+###### Desmontaje:
 En esta etapa nuestro componente “Muere” cuando nosotros no necesitamos un elemento de nuestra aplicación, podemos pasar por este ciclo de vida y de esta forma eliminar el componente de la representación que tiene en el DOM.
 
 **componentWillUnmount()**
 
 Este método se llama justo antes de que el componente sea destruido o eliminado del DOM.
 
-#### Manejo de Errores:
+###### Manejo de Errores:
 Cuando nuestro código se ejecuta y tiene un error, podemos entrar en una fase donde se puede entender mejor qué está sucediendo con la aplicación.
 
 Algo que debemos tener en cuenta es que un componente NO debe pasar por toda las fases, un componente puede ser montado y desmontado sin pasar por la fase de actualización o manejo de errores.
