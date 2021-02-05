@@ -1,4 +1,6 @@
 # Apuntes React
+
+## Parte 1 Creando App y Tipos de componentes
 Lo primero que debemos hacer es instalar nodeJS en nuestro equipo
 verificamos su version de npm y npx:
 
@@ -57,6 +59,28 @@ Stateful -> *Los componentes de tipo Stateful se encarga manejar los ciclos de v
 6. Crear metodo render para la clase
 7. Exportar clase (componente)
 
+```
+import React from 'react';
+import Component from 'react';
+
+class Stateful extends Component {
+  constructor(){
+    super();
+    this.state = {
+      hello: 'Hello World'
+    }
+  }
+
+  render(){
+    return (
+      <p>{this.state.hello}</p>
+    )
+  }
+}
+
+export default Stateful;
+```
+
 <!-- primer componente a crear sera un Stateful.js (Capitalcase) NOTA: descripcion mas abajo
 
 import dentro del archivos Libreria de react
@@ -66,7 +90,7 @@ Stateful debe extender de Components (libreria de react)
 crear constructor en la clase Stateful y funcion render() (retorna la funcion la pagina)
 
 exportar la clase. -->
-**Componente Stateful**
+**Componente Stateless**
 
 Dentro de la carpeta Components crearemos un archivo llamado Stateless.js (la extension puede cambiar a jsx) donde importar las librerias de react, creamos una funcion de tipo flecha con el nombre Stateless posteriormente crearemos un metodo llamado render, este ultimo se encarga de retornar el HTML que crearemos luego se debe exportar el nuevo componente (la funcion especificamente).
 
@@ -80,6 +104,17 @@ Stateless -> *Los componentes de tipo Stateful no depende de tener un estado o u
 5. Crear metodo render para la funcion
 7. Exportar funcion (componente)
 
+```
+import React from 'react';
+
+const Stateless = () => {
+  return (
+    <p className="Stateless">This is another hello world from a stateless component</p>
+  )
+}
+
+export default Stateless;
+```
 <!-- crear un Stateless.js
 
 import react library
@@ -88,7 +123,7 @@ create constants Stateless as a function and return html into -> ()
 
 export function -->
 
-**Componente Stateful**
+**Componente Presentacional**
 
 Dentro de la carpeta Components crearemos un archivo llamado Presentacional.js (la extension puede cambiar a jsx) donde importar las librerias de react, creamos una funcion de tipo flecha con el nombre Presentacional posteriormente crearemos un metodo llamado render, este ultimo se encarga de retornar el HTML que crearemos luego se debe exportar el nuevo componente (la funcion especificamente).
 
@@ -101,6 +136,14 @@ Presentacional -> *Los componentes de tipo Presentacional no tienen logica ni pr
 4. Crear funcion flecha Presentacional
 5. Crear metodo render para la funcion
 7. Exportar funcion (componente)
+
+```
+import React from 'react';
+
+const Presentational = () => <p>This is a message from a presentational component</p>
+
+export default Presentational;
+```
 
 ***NOTA: se recomiendo que los nombre de los archivos sean con Capitalcase***
 <!-- crear un Presentacional.js
@@ -118,29 +161,67 @@ exporta constante -->
 
 <!-- Presentacionales -> no tienen logica ni propiedades se encargan de mostrar el html, de como se vera los elementos, tienen una parte particular de html usa funciones pero no logica.(averiguar mas) -->
 
-## parte 2:
+## Parte 2 - JSX JavaScript + HTML:
 
-JSX -> sintaxis que usa react para mezclar javascripts html y css en un solo componente (componente = archivo)
+JSX -> *sintaxis que usa react para mezclar javascripts, html y css en un solo componente (componente = archivo) esto nos permite tener todo el codigo perteneciente a un componente en un solo archivo.*
 
-para usarlo se crea un archivo en componentes (crear carperta componentes en src) con extension jsx (igual se puede usar la extension js).
-para los elementos de la clase los HTML debe reemplazar el class por className
-para añadir el contenido (como el valor de una variable) del elemento de html se usan -> {} en el elemento html
-se deben cerrar todas las etiquetas (HTML)
-podemos hacer validaciones (como un if ternario) dentro del return de la funcion, en el html
+Para usarlo se crea un archivo en componentes (crear carperta componentes en src) con extension jsx, un componente presentacional para este caso (igual se puede usar la extension js), la diferencia hoy en dia solo causa que el IDE te entregue o no ayuda respecto a codigo react (si usas jsx) mas que eso no afecta a tu codigo ya que el transpilador (BABEL en este caso) logra entender ambas extensiones sin problemas.
 
-para visualizar el componente creado en el sitio se debe conectar a la aplicacion en el archivos index.js, donde se encuentra la configuracion del proyecto, aqui tenemos react y reactDOM, archivo de css, y otros componentes.
-Aqui debemos importar el componente que se creo nuevo.
+Es importante tener en cuenta que en los componentes de react no podemos usar la palabra clave class para asignarle una clase a los elementos de HTML esta palabra se debe reemplazar por className de lo contrario obtendremos un error, esto se puede modificar para que se pueda utilizar de todos modos pero por defecto no se permite.
 
-no es necesario al importar especificar la extension de los archivos.
+Para agregar contenido de js como el valor de una variable a los elementos de HTML se usan las llaves {}, Es importante cerrar todas las etiquetas de HTML de lo contrario se generaran errores al compilar el codigo. Asi como podemos agregar variables de JS al HTML tambien podemos agregar codigo de JS como condicionales (un if ternario por ejemplo) al igual que la variable se usan llaves para incrustar el JS en el HTML.
 
-para mostrar el componente importado se debe agregar en los parentesis de la funcion render del ReactDOM.
-Ejemplo:
+***NOTA: Es una buena practica crear primero el esqueleto del componente y luego rellenar con el resto del codigo, import clase o funcion y export***
+
+```
+<div className="HelloWorld">
+    <h1>{Hello}</h1>
+    <h2>Curso Escencial de React</h2>
+    <img src="https://arepa.s3.amazonaws.com/react.png" alt="React"/>
+    {isTrue ? <h4>Esto es verdadero</h4> : <h5>Soy falso</h5>}
+    {isTrue && <h6>Soy verdadero</h6>}
+</div>
+```
+Para visualizar este componente asi como en los anteriores ejemplos debemos de conectarlo con el archivo index.js que es el encargado de mostrar y desplegar el contenido en el browser. Esto lo hacemos mediante el import de este componente en el index.js.
+
+En el archivo de index.js tenemos lo que es react, reactDOM, CSS y otro componentes, basicamente importamos aqui todo lo que sea necesario para el proyecto incluyendo el nuevo componentes.
+
+una vez importado el componente debemos agregar este al metodo render de la clase ReactDOM, este metodo recibe dos parametros, el o los componentes y el elemento donde se mostrara (elemento HTML), aqui obtendremos el elemento con su id mediante JS.
 
 ```
 ReactDOM.render(<HolaMundo /> ---> este es el componente, document.getElementById('root'));
 ```
 
-## Crear un elemento .jsx del tipo presentacional
+**Pasos**
+1. Crear componente presentacional (Stateless) en Components
+2. Importar react
+3. Crear función constante
+4. Exportar componente
+5. Agregar return a la funcion
+6. Agregar codigo HTML al return de la función
+7. Agregamos el codigo JS que necesitemos, variables, validaciones como un IF, etc...
+8. Importamos en index.js (puede variar el nombre... supongo)
+9. Pasamos por parametro el componente a la función render del ReactDOM y elemento HTML donde se mostrara
+10. Correr proyecto
+
+***NOTA: Cuando importamos no es necesario especificar la extensión del archivo***
+<!-- para los elementos de la clase los HTML debe reemplazar el class por className -->
+
+<!-- para añadir el contenido (como el valor de una variable) del elemento de html se usan -> {} en el elemento html -->
+
+<!-- se deben cerrar todas las etiquetas (HTML) -->
+<!-- podemos hacer validaciones (como un if ternario) dentro del return de la funcion, en el html -->
+
+<!-- para visualizar el componente creado en el sitio se debe conectar a la aplicacion en el archivos index.js, donde se encuentra la configuracion del proyecto, aqui tenemos react y reactDOM, archivo de css, y otros componentes.
+Aqui debemos importar el componente que se creo nuevo. -->
+
+<!-- no es necesario al importar especificar la extension de los archivos. -->
+
+<!-- para mostrar el componente importado se debe agregar en los parentesis de la funcion render del ReactDOM.
+Ejemplo:
+-->
+
+<!-- ## Crear un elemento .jsx del tipo presentacional
 importamos react
 creamos una constante (funcion)
 exportamos el componente
@@ -153,7 +234,7 @@ podemos agregar variables y mostrarlas en el html entre llaves
 e incluso podemos agregar validaciones entre llaves (como un if ternario)
 
 una vez creado se importa en el index.js y lo agregamos al render de reactDOM
-con esto deberia poder verse este componente en el index
+con esto deberia poder verse este componente en el index -->
 
 ## Parte 3:
 
